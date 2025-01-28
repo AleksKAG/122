@@ -31,14 +31,14 @@ jobs:
     - name: lint
       run: go vet -v ./...
 
-  test: 
-  needs: build
-  runs-on: ubuntu-latest
+  tests:
+    
+    needs: build
+    runs-on: ubuntu-latest
     steps:
-    - name: inst Go
-      uses: actions/setup-go@v5
-    - name: chec
-      uses: actions/checkout@v4
-    - name: lint
-      run: go vet -v ./...
+    - uses: actions/checkout@v4
+    - uses: actions/setup-go@v5
+
+    - name: Test
+      run: go test -v ./...
       
